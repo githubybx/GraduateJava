@@ -16,17 +16,19 @@ public class Result<T> {
         this.message = message;
     }
 
-    public Result(Msg msg){
+    public Result(Msg msg) {
         this.code = msg.code;
         this.message = msg.message;
     }
-    public Result(Msg msg, T data){
+
+    public Result(Msg msg, T data) {
         this.code = msg.code;
         this.message = msg.message;
         this.data = data;
     }
-    public static Result Success = new Result(1,"success");
-    public static Result Failed = new Result(0,"success");
+
+    public static Result Success = new Result(1, "success");
+    public static Result Failed = new Result(0, "success");
 
     public int getCode() {
         return code;

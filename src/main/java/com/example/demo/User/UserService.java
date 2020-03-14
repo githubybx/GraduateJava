@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     UserDao userDao;
-    public User findByEmailAndPass(String email,String pass){
-        return userDao.findByEmailAndPass(email,pass);
+
+    public User findByEmailAndPass(String email, String pass) {
+        return userDao.findByEmailAndPass(email, pass);
     }
-    public User save(User user){
-       return userDao.save(user);
+
+    public User save(User user) {
+        return userDao.save(user);
     }
 
 }
