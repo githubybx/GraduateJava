@@ -1,8 +1,12 @@
 package com.example.demo.File;
 
+import com.example.demo.BaiDuAPI.FaceDetect;
+import com.example.demo.Emotion.Emotion;
+import com.example.demo.Emotion.EmotionService;
 import com.example.demo.Response.Msg;
 import com.example.demo.Response.Result;
 import com.example.demo.Util.UUIDUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +18,8 @@ import java.io.IOException;
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 @RestController
 public class FileController {
+    @Autowired
+    EmotionService emotionService;
     //前端上传文件的接口
     @RequestMapping(value = "/uploadfile")
     public Result getFile(@RequestParam("file") MultipartFile[] file, HttpServletResponse response, @RequestParam("pid")int pid) throws IOException {
@@ -37,6 +43,7 @@ public class FileController {
             File destFile = new File(destFile1,UUIDUtil.getUUID() + "." + fileSuffix);
             file[i].transferTo(destFile);
             //对文件的人物进行情绪识别
+            Emotion emotion = emotionService.faceDetectResult(destFile.toString(), pid);
 
         }
         if(file.length != 0) {

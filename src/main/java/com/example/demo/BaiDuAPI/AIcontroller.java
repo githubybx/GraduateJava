@@ -13,23 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-@RestController
-public class AIcontroller {
-  @RequestMapping("/get/dector")
-    public Result getDectreor(@RequestParam("path")String path) throws IOException {
-      try {
-          String result = FaceDetect.faceDetect(path);
-          if (result == "") {
-              return new Result(Msg.EmotionDetectFailed);
-          }
-          FaceResult faceRsult = FaceResultUtil.getFaceRsult(result);
-          if (faceRsult != null) {
-              return new Result(Msg.EmotionDetectSuccess, faceRsult);
-          } else {
-              return new Result(Msg.EmotionDetectFailed);
-          }
-      }catch (Exception exception){
-          return new Result(Msg.EmotionDetectFailed);
-      }
-  }
-}
+//@RestController
+//public class AIcontroller {
+//  @RequestMapping("/get/dector")
+//    public Result getDectreor(@RequestParam("path")String path) throws IOException {
+//      try {
+//          String result = FaceDetectResult.faceDetect(path);
+//          if (result == "") {
+//              return new Result(Msg.EmotionDetectFailed);
+//          }
+//          FaceResult faceRsult = FaceResultUtil.getFaceRsult(result);
+//          if (faceRsult != null) {
+//              return new Result(Msg.EmotionDetectSuccess, faceRsult);
+//          } else {
+//              return new Result(Msg.EmotionDetectFailed);
+//          }
+//      }catch (Exception exception){
+//          return new Result(Msg.EmotionDetectFailed);
+//      }
+//  }
+//}

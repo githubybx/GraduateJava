@@ -39,6 +39,9 @@ public class Msg {
     //人脸情绪识别部分
     public static final Msg EmotionDetectSuccess = new Msg(1000025, "情绪识别成功");
     public static final Msg EmotionDetectFailed = new Msg(1000026, "情绪识别失败");
+    public static final Msg GetAllEmotionMsgSuccess = new Msg(1000027, "获取情绪识别结果成功");
+    public static final Msg GetAllEmotionMsgFailed = new Msg(1000028, "获取情绪识别结果失败");
+
 
 
 

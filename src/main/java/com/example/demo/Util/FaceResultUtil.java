@@ -5,8 +5,9 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.BaiDuAPI.FaceResult;
 
+//对人脸分析的结果进行解析
 public class FaceResultUtil {
-    public static FaceResult getFaceRsult(String result) throws Exception {
+    public static FaceResult getFaceRsult(String result){
             if (result == null) {
                 System.out.println("result null");
                 return null;
@@ -16,6 +17,9 @@ public class FaceResultUtil {
             String error_msg = jsonObject.get("error_msg").toString();
             //得到了result:{"face_num":1,"face_list":[{"face_shape":{"probability":0.6,"type":"oval"},"expression":{"probability":1,"type":"smile"},"face_type":{"probability":0.99,"type":"human"},"angle":{"roll":9.96,"pitch":3.87,"yaw":-4.25},"face_token":"d888253e91ad87405bde4491bdda7154","location":{"top":177.81,"left":818.19,"rotation":13,"width":156,"height":162},"face_probability":1}]}
             String result1 = NUllTestUtil.testNUll(jsonObject.get("result"));
+            if(result1 == null){
+                    return null;
+            }
             System.out.println(result1);
             JSONObject jsonObject1 = JSON.parseObject(result1);
             String face_list = NUllTestUtil.testNUll(jsonObject1.get("face_list"));
